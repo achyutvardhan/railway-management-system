@@ -5,7 +5,12 @@ let add = document.getElementById('add')
 detail.remove()
 newContainer.remove()
 const submit = document.querySelector('#submit')
-submit.addEventListener('click',showDetail)
+submit.addEventListener('click',showDetail);
+
+
+
+
+
 function showDetail(e) {
     container.innerHTML=` <div class="divPnr">
     <div class="mb-3">
