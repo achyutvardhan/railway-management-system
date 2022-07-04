@@ -1,6 +1,7 @@
 const detail = document.querySelector('.divDetail')
 const container = document.querySelector('.container')
 const newContainer = document.querySelector('.container-1')
+let add = document.getElementById('add')
 detail.remove()
 newContainer.remove()
 const submit = document.querySelector('#submit')
@@ -76,8 +77,10 @@ function showDetail(e) {
             </div>
       </div>
 </div>`
+add = document.getElementById('add')
+add.remove()
 }
-const add = document.getElementById('add')
+
 add.addEventListener('click',enterDetail)
 function enterDetail(e) {
     
