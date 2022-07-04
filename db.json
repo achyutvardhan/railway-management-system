@@ -1,17 +1,23 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
   "users": [
     {
       "id": 1,
       "pnr": 12345678,
       "user_name": "achyut vardhan",
       "seat_number": 25,
+      "birth_number": "b1",
+      "from": "bhagalpur",
+      "to": "ranchi",
+      "date_of_departure": "26-05-2022",
+      "date_of_arrival": "27-05-2022",
+      "time_of_arrival": "19:00 PM",
+      "time_of_departure": "8:00 AM"
+    },
+    {
+      "id": 2,
+      "pnr": 123456789,
+      "user_name": "riya kumari",
+      "seat_number": 26,
       "birth_number": "b1",
       "from": "bhagalpur",
       "to": "ranchi",
