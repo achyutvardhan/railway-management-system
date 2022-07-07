@@ -9,6 +9,7 @@ let submit = document.querySelector('#submit')
 submit.addEventListener('click',showDetail);
 
 
+
 function showDetail(e) {
   let input= document.getElementById('formGroupExampleInput').value
 
@@ -100,5 +101,95 @@ add.remove()
 add.addEventListener('click',enterDetail)
 function enterDetail(e) {
     
-    container.replaceWith(newContainer)
+    container.replaceWith(newContainer);
+
+    const save = document.querySelector('#save1')
+console.log(save)
+save.addEventListener('click',saveDetail)
+
+function saveDetail(e) {
+  
+
+let pnrN = document.getElementById('pnr').value
+let name = document.getElementById('name').value
+let seatNo = document.getElementById('seatNo').value
+let birthNo = document.getElementById('birthNo').value
+let fromS = document.getElementById('from').value
+let toS = document.getElementById('to').value
+let dateDepart = document.getElementById('dateDepart').value
+let dateArrival = document.getElementById('dateArrival').valu
+let timeDepart = document.getElementById('timeDepart').value
+let timeArrival = document.getElementById('timeArrival').value
+
+const PostData = async () => {
+const res = await fetch('http://localhost:3000/users',{
+  method:"POST",
+      pnr: pnrN,
+      user_name: name,
+      seat_number: seatNo,
+      birth_number: birthNo,
+      from: fromS,
+      to: toS,
+      date_of_departure: dateDepart,
+      date_of_arrival: dateArrival,
+      time_of_arrival: timeDepart,
+      time_of_departure: timeArrival
+    })
+    const r = await res.json();
+      console.log(r);
+
+    if (r.errors) {
+      console.log("Error");
+    } else if (!r.errors) {
+      console.log("Login Admin");
+      navigate("/admin/post-content");
+    } else {
+      console.log("Unwanted Error");
+    }
+  }
+  }
+    
 }
+
+
+
+
+//saving details
+
+
+
+// const save = document.querySelector('#save1')
+// console.log(save)
+// save.addEventListener('click',saveDetail)
+
+// const axios = require('axios').default;
+// function saveDetail(e) {
+
+// let pnrN = document.getElementById('pnr').value
+// let name = document.getElementById('name').value
+// let seatNo = document.getElementById('seatNo').value
+// let birthNo = document.getElementById('birthNo').value
+// let fromS = document.getElementById('from').value
+// let toS = document.getElementById('to').value
+// let dateDepart = document.getElementById('dateDepart').value
+// let dateArrival = document.getElementById('dateArrival').value
+// let timeDepart = document.getElementById('timeDepart').value
+// let timeArrival = document.getElementById('timeArrival').value
+
+//     axios.post('http://localhost:3000/users',{
+//       pnr: pnrN,
+//       user_name: name,
+//       seat_number: seatNo,
+//       birth_number: birthNo,
+//       from: fromS,
+//       to: toS,
+//       date_of_departure: dateDepart,
+//       date_of_arrival: dateArrival,
+//       time_of_arrival: timeDepart,
+//       time_of_departure: timeArrival
+//     }).then(resp => {
+//       console.log(resp.data);
+//   }).catch(error => {
+//       console.log(error);
+//   });
+// }
