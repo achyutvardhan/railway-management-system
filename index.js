@@ -96,6 +96,35 @@ submit = document.querySelector('#submit')
 submit.addEventListener('click',showDetail);
 add = document.getElementById('add')
 add.remove()
+
+//now lets head towards delete
+ let deleteItem = document.getElementById('delete')
+deleteItem.addEventListener('click',deleteArray)
+function deleteArray(e) {
+ async function deleteData(url='http://localhost:3000/users', data ={
+  "pnr":json[index].pnr ,
+      "user_name":json[index].user_name,
+      "seat_number": json[index].seat_number,
+      "birth_number":json[index].birth_number,
+      "from": json[index].from,
+      "to": json[index].to,
+      "date_of_departure": json[index].date_of_departure,
+      "date_of_arrival": json[index].date_of_arrival,
+      "time_of_arrival": json[index].time_of_arrival,
+      "time_of_departure": json[index].time_of_departure
+ }
+ ){
+  const response = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  return response.json()
+ }
+ deleteData()
+}
   }}})}
 
 add.addEventListener('click',enterDetail)

@@ -15,7 +15,7 @@
     },
     {
       "id": 2,
-      "pnr": 123456789,
+      "pnr": "123456789",
       "user_name": "riya kumari",
       "seat_number": 26,
       "birth_number": "b1",
