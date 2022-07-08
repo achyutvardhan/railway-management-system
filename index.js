@@ -123,7 +123,11 @@ function deleteArray(e) {
   })
   return response.json()
  }
- deleteData()
+ deleteData().then(data => {
+  console.log(data)
+  alert(` deleted successfully`); // JSON data parsed by `data.json()` call
+})
+
 }
   }}})}
 
