@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "pnr": 12345678,
+      "pnr": "12345678",
       "user_name": "achyut vardhan",
       "seat_number": 25,
       "birth_number": "b1",

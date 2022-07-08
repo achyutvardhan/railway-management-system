@@ -129,6 +129,34 @@ function deleteArray(e) {
 })
 
 }
+
+//EDIT THE EXISITING DETAIL
+// let edit = document.getElementById('edit')
+// edit.addEventListener("click",editItem)
+// function editItem(e) {
+
+//   json[index].user_name = "JHOSHI"
+//   console.log(json[index].user_name)
+//   async function editData(url='http://localhost:3000/users', data ={
+  
+//       "user_name":json[index].user_name
+      
+//  }
+//  ){
+//   const response = await fetch(url, {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(data)
+//   })
+//   return response.json()
+//  }
+//  editData()
+// }
+
+
+
   }}})}
 
 add.addEventListener('click',enterDetail)
@@ -183,7 +211,6 @@ async function postData(url = 'http://localhost:3000/users', data = {
   }
     
 }
-
 
 
 
