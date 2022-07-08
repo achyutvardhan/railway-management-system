@@ -117,36 +117,36 @@ let birthNo = document.getElementById('birthNo').value
 let fromS = document.getElementById('from').value
 let toS = document.getElementById('to').value
 let dateDepart = document.getElementById('dateDepart').value
-let dateArrival = document.getElementById('dateArrival').valu
+let dateArrival = document.getElementById('dateArrival').value
 let timeDepart = document.getElementById('timeDepart').value
 let timeArrival = document.getElementById('timeArrival').value
 
-const PostData = async () => {
-const res = await fetch('http://localhost:3000/users',{
-  method:"POST",
-      pnr: pnrN,
-      user_name: name,
-      seat_number: seatNo,
-      birth_number: birthNo,
-      from: fromS,
-      to: toS,
-      date_of_departure: dateDepart,
-      date_of_arrival: dateArrival,
-      time_of_arrival: timeDepart,
-      time_of_departure: timeArrival
-    })
-    const r = await res.json();
-      console.log(r);
+async function postData(url = 'http://localhost:3000/users', data = {
+  "pnr": pnrN,
+      "user_name": name,
+      "seat_number": seatNo,
+      "birth_number": birthNo,
+      "from": fromS,
+      "to": toS,
+      "date_of_departure": dateDepart,
+      "date_of_arrival": dateArrival,
+      "time_of_arrival": timeDepart,
+      "time_of_departure": timeArrival
+}) {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  return response.json()
+}
 
-    if (r.errors) {
-      console.log("Error");
-    } else if (!r.errors) {
-      console.log("Login Admin");
-      navigate("/admin/post-content");
-    } else {
-      console.log("Unwanted Error");
-    }
-  }
+  postData()
+  alert("data registered successfully!")
+  
+  
   }
     
 }
@@ -154,42 +154,3 @@ const res = await fetch('http://localhost:3000/users',{
 
 
 
-//saving details
-
-
-
-// const save = document.querySelector('#save1')
-// console.log(save)
-// save.addEventListener('click',saveDetail)
-
-// const axios = require('axios').default;
-// function saveDetail(e) {
-
-// let pnrN = document.getElementById('pnr').value
-// let name = document.getElementById('name').value
-// let seatNo = document.getElementById('seatNo').value
-// let birthNo = document.getElementById('birthNo').value
-// let fromS = document.getElementById('from').value
-// let toS = document.getElementById('to').value
-// let dateDepart = document.getElementById('dateDepart').value
-// let dateArrival = document.getElementById('dateArrival').value
-// let timeDepart = document.getElementById('timeDepart').value
-// let timeArrival = document.getElementById('timeArrival').value
-
-//     axios.post('http://localhost:3000/users',{
-//       pnr: pnrN,
-//       user_name: name,
-//       seat_number: seatNo,
-//       birth_number: birthNo,
-//       from: fromS,
-//       to: toS,
-//       date_of_departure: dateDepart,
-//       date_of_arrival: dateArrival,
-//       time_of_arrival: timeDepart,
-//       time_of_departure: timeArrival
-//     }).then(resp => {
-//       console.log(resp.data);
-//   }).catch(error => {
-//       console.log(error);
-//   });
-// }

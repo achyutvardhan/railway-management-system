@@ -25,6 +25,31 @@
       "date_of_arrival": "27-05-2022",
       "time_of_arrival": "19:00 PM",
       "time_of_departure": "8:00 AM"
+    },
+    {
+      "pnr": "14268723",
+      "user_name": "anmol",
+      "seat_number": "23",
+      "birth_number": "s2",
+      "from": "delhi",
+      "to": "ranchi",
+      "date_of_departure": "2022-07-06",
+      "time_of_arrival": "01:55",
+      "time_of_departure": "04:55",
+      "id": 3
+    },
+    {
+      "pnr": "12673033",
+      "user_name": "anurag",
+      "seat_number": "12",
+      "birth_number": "a1",
+      "from": "ranchi",
+      "to": "delhi",
+      "date_of_departure": "2022-07-12",
+      "date_of_arrival": "2022-07-27",
+      "time_of_arrival": "01:58",
+      "time_of_departure": "05:58",
+      "id": 4
     }
   ]
 }
