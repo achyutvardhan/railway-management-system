@@ -9,7 +9,6 @@ let submit = document.querySelector('#submit')
 submit.addEventListener('click',showDetail);
 
 
-
 function showDetail(e) {
   let input= document.getElementById('formGroupExampleInput').value
 
@@ -17,6 +16,7 @@ function showDetail(e) {
   fetch("http://localhost:3000/users")
 .then(res=> res.json())
 .then(json=>{
+  console.log(json)
   input= document.getElementById('formGroupExampleInput').value
  for (let index = 0; index < json.length; index++) {
   if(input==json[index].pnr)
@@ -98,62 +98,31 @@ add = document.getElementById('add')
 add.remove()
 
 //now lets head towards delete
+
+let id = index+1
  let deleteItem = document.getElementById('delete')
 deleteItem.addEventListener('click',deleteArray)
 function deleteArray(e) {
- async function deleteData(url='http://localhost:3000/users', data ={
-  "pnr":json[index].pnr ,
-      "user_name":json[index].user_name,
-      "seat_number": json[index].seat_number,
-      "birth_number":json[index].birth_number,
-      "from": json[index].from,
-      "to": json[index].to,
-      "date_of_departure": json[index].date_of_departure,
-      "date_of_arrival": json[index].date_of_arrival,
-      "time_of_arrival": json[index].time_of_arrival,
-      "time_of_departure": json[index].time_of_departure
- }
- ){
-  const response = await fetch(url, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  return response.json()
- }
- deleteData().then(data => {
-  console.log(data)
-  alert(` deleted successfully`); // JSON data parsed by `data.json()` call
-})
 
+// json = json.filter(element=>element.id != id)
+// console.log(json)
+fs.readFile('db.json', (err, data)=>{
+  console.log(data)
+  obj = JSON.parse(data);
+
+  // assign the filtered array back to the original array
+  obj.users = obj.users.filter((item)=>item.id != id)
+
+  console.log(obj)
+  let jsonFile = JSON.stringify(obj);
+  fs.writeFile('webProjects.json', jsonFile, (err)=>{
+      if(err) throw err;
+      console.log(obj)
+  })
+})
 }
 
-//EDIT THE EXISITING DETAIL
-// let edit = document.getElementById('edit')
-// edit.addEventListener("click",editItem)
-// function editItem(e) {
 
-//   json[index].user_name = "JHOSHI"
-//   console.log(json[index].user_name)
-//   async function editData(url='http://localhost:3000/users', data ={
-  
-//       "user_name":json[index].user_name
-      
-//  }
-//  ){
-//   const response = await fetch(url, {
-//     method: 'PUT',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(data)
-//   })
-//   return response.json()
-//  }
-//  editData()
-// }
 
 
 

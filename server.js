@@ -10,8 +10,8 @@
 //     console.log(req.body)
 //     res.send("")
 // })
-// // app.use("/*",(req,res) => {
-// //     res.status(404)
-// //     res.send("NOT FOUND")
-// // })
-// app.listen(8080)
+// app.use("/*",(req,res) => {
+//     res.status(404)
+//     res.send("NOT FOUND")
+// })
+app.listen(8080)
