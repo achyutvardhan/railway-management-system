@@ -35,7 +35,7 @@ function showDetail(e) {
               </div>
         </div>
       </div>
-</div>
+</div>                                                               
 <div class="divDetail" id="divDetail">
     <table class="table" id="table1">
         <thead>
