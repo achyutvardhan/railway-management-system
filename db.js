@@ -1,5 +1,5 @@
-{
-  "users": [
+
+  const user = [
     {
       "id": 1,
       "pnr": "12345678",
@@ -65,4 +65,4 @@
       "id": 5
     }
   ]
-}
+  module.exports = user;
