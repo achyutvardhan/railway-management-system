@@ -179,8 +179,6 @@
   "bugs": {
     "url": "https://github.com/achyutvardhan/railway-management-system/issues"
   },
-  "homepage": "https://github.com/achyutvardhan/railway-management-system#readme",
-  "devDependencies": {
-    "parcel-bundler": "^1.12.5"
-  }
+  "homepage": "https://github.com/achyutvardhan/railway-management-system#readme"
+  
 }
