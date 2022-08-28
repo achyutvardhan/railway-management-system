@@ -1,5 +1,4 @@
 const express = require("express");
-const dbdata = require("../../db");
 const router = express.Router();
 const postController = require("../../controller/userMember/postController");
 const getController = require("../../controller/userMember/getController");
