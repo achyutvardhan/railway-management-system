@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "json-server --watch ./db.json",
-    "dev": "nodemon ./server.js"
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
