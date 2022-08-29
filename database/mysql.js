@@ -1,10 +1,9 @@
-var mysql = require("mysql");
-
-var con = mysql.createConnection({
+var mysql = require("mysql2");
+var con = mysql.createPool({
   host: "localhost",
   user: "root",
   password: "root",
   database: "railwayManagment",
 });
 
-module.exports = con;
+module.exports = con.promise();
