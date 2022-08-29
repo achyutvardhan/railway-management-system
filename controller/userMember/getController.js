@@ -1,4 +1,5 @@
 const dbdata = require("../../db");
+
 function get(req, res) {
   const found = dbdata.some((member) => member.pnr === req.params.pnr);
   if (found) {

@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
-// const mysql = require("mysql");
+const con = require("./database/mysql");
 
+con.connect(function (err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
