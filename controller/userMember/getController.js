@@ -1,4 +1,3 @@
-const dbdata = require("../../db");
 const con = require("../../database/mysql");
 function get(req, res) {
   let pnr = req.params.pnr;

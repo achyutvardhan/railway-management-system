@@ -1,4 +1,6 @@
 const dbdata = require("../../db");
+const con = require("../../database/mysql");
+
 function add(req, res) {
   const newUser = {
     pnr: req.body.pnr,
@@ -12,18 +14,16 @@ function add(req, res) {
     time_of_arrival: req.body.time_of_arrival,
     time_of_departure: req.body.time_of_departure,
   };
-  var found = false;
-  dbdata.forEach((element) => {
-    if (element.pnr === newUser.pnr) {
-      found = true;
-    }
-  });
 
-  if (found) {
-    res.status(200).send("User already Exist");
-  } else {
-    dbdata.push(newUser);
-    res.json(dbdata);
+  async function postData() {
+    var sql = `insert into railwayManagment select ${newUser.pnr},'${newUser.user_name}',${newUser.seat_number},'${newUser.birth_number}','${newUser.from}','${newUser.to}','${newUser.date_of_departure}','${newUser.date_of_arrival}','${newUser.time_of_arrival}','${newUser.time_of_departure}' where not exists(select * from railwayManagment where pnr = '${newUser.pnr}')`;
+    var result = await con.query(sql);
+    if (result[0].affectedRows > 0) {
+      res.send("Data Saved");
+    } else {
+      res.send("Data Failed To Save");
+    }
   }
+  postData();
 }
 module.exports.add = add;
