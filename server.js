@@ -11,5 +11,5 @@ app.use(require("./crypto"));
 app.use("/userMember", require("./routes/api/userMember"));
 
 app.listen(5000, () => {
-  console.log("listening to port 5000");
+  console.log("listening to port 8080");
 });
