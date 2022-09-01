@@ -133,22 +133,23 @@ function enterDetail(e) {
     let timeArrival = document.getElementById("timeArrival").value;
 
     async function postData(
-      url = "http://localhost:3000/users",
+      url = "http://localhost:5000/userMember/add",
       data = {
         pnr: pnrN,
-        user_name: name,
-        seat_number: seatNo,
-        birth_number: birthNo,
-        from: fromS,
-        to: toS,
-        date_of_departure: dateDepart,
-        date_of_arrival: dateArrival,
-        time_of_arrival: timeDepart,
-        time_of_departure: timeArrival,
+        name: name,
+        seatno: seatNo,
+        birthno: birthNo,
+        fromS: fromS,
+        toS: toS,
+        dateOfDeparture: dateDepart,
+        dateOfArrival: dateArrival,
+        timeOfArrival: timeDepart,
+        timeOfDeparture: timeArrival,
       }
     ) {
       const response = await fetch(url, {
         method: "POST",
+        mode: "no-cors",
         headers: {
           "Content-Type": "application/json",
         },
