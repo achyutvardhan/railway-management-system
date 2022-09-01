@@ -130,9 +130,13 @@ async function showDetail() {
           editSave.addEventListener("click", editedData);
 
           async function editedData() {
-            var epnrN = document.getElementById("pnr").value;
+            var epnrN = document.getElementById("pnr").value
+              ? document.getElementById("pnr").value
+              : json.pnr;
             console.log(epnrN);
-            var ename = document.getElementById("name").value;
+            var ename = document.getElementById("name").value
+              ? document.getElementById("name").value
+              : json.name;
             console.log(ename);
             var eseatNo = document.getElementById("seatNo").value
               ? document.getElementById("seatNo").value
@@ -265,5 +269,3 @@ function enterDetail(e) {
     }
   }
 }
-
-// function editUser() {};
