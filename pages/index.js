@@ -6,8 +6,8 @@ newContainer.remove();
 
 async function showDetail() {
   //fetch function
+  let input = document.getElementById("formGroupExampleInput").value;
   try {
-    let input = document.getElementById("formGroupExampleInput").value;
     console.log(input);
     console.log(`http://localhost:80/userMember/submit/${input}`);
     var result = await fetch(`http://localhost:80/userMember/submit/${input}`, {
@@ -90,8 +90,110 @@ async function showDetail() {
       </div>`;
         let submit = document.getElementById("submit");
         submit.addEventListener("click", showDetail);
-        // add = document.getElementById("add");
-        // add.remove();
+        var add = document.getElementById("add");
+        add.addEventListener("click", enterDetail);
+        var deleteU = document.getElementById("delete");
+        deleteU.addEventListener("click", deleteUser);
+        //deleting user
+        async function deleteUser() {
+          try {
+            console.log(json.pnr);
+            const delUrl = `http://localhost:80/userMember/delete/${json.pnr}`;
+            console.log(delUrl);
+            var deleteData = await fetch(delUrl, {
+              method: "DELETE",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+            });
+            if (deleteData.status == 200) {
+              alert("Deleted Succesfull ");
+              newContainer.replaceWith(container);
+            }
+            if (deleteData.status == 400) {
+              let deleteResult = await deleteData.json();
+              console.log(deleteResult);
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        }
+
+        //edit button
+        var editU = document.getElementById("edit");
+        editU.addEventListener("click", editUser);
+        function editUser() {
+          container.replaceWith(newContainer);
+
+          let editSave = document.getElementById("save1");
+          editSave.addEventListener("click", editedData);
+
+          async function editedData() {
+            var epnrN = document.getElementById("pnr").value;
+            console.log(epnrN);
+            var ename = document.getElementById("name").value;
+            console.log(ename);
+            var eseatNo = document.getElementById("seatNo").value
+              ? document.getElementById("seatNo").value
+              : json.seatno;
+            var ebirthNo = document.getElementById("birthNo").value
+              ? document.getElementById("birthNo").value
+              : json.birthno;
+            var efromS = document.getElementById("from").value
+              ? document.getElementById("from").value
+              : json.fromS;
+            var etoS = document.getElementById("to").value
+              ? document.getElementById("to").value
+              : json.toS;
+            var edateDepart = document.getElementById("dateDepart").value
+              ? document.getElementById("dateDepart").value
+              : json.dateOfDeparture;
+            var edateArrival = document.getElementById("dateArrival").value
+              ? document.getElementById("dateArrival").value
+              : json.dateOfArrival;
+            var etimeDepart = document.getElementById("timeDepart").value
+              ? document.getElementById("timeDepart").value
+              : json.timeOfDeparture;
+            var etimeArrival = document.getElementById("timeArrival").value
+              ? document.getElementById("timeArrival").value
+              : json.timeOfArrival;
+            try {
+              let editdata = {
+                pnr: epnrN,
+                user_name: ename,
+                seatno: eseatNo,
+                birthno: ebirthNo,
+                from: efromS,
+                to: etoS,
+                dateOfDeparture: edateDepart,
+                dateOfArrival: edateArrival,
+                timeOfDeparture: etimeDepart,
+                timeOfArrival: etimeArrival,
+              };
+              console.log(editdata);
+              const editUrl = `http://localhost:80/userMember/edit/${json.pnr}`;
+              var editRes = await fetch(editUrl, {
+                method: "PUT",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(editdata),
+              });
+              if (editRes.status == 200) {
+                alert("edit Succesfull ");
+                newContainer.replaceWith(container);
+              }
+              if (editRes.status == 400) {
+                let editResult = await editRes.json();
+                console.log(editResult);
+              }
+            } catch (error) {
+              console.log(error);
+            }
+          }
+        }
       }
     } catch (err) {
       console.log(err);
@@ -100,6 +202,10 @@ async function showDetail() {
   } catch (err) {
     console.log(`Fetch problem: ${err.message}`);
   }
+}
+
+function back() {
+  newContainer.replaceWith(container);
 }
 
 function enterDetail(e) {
@@ -159,3 +265,5 @@ function enterDetail(e) {
     }
   }
 }
+
+// function editUser() {};
