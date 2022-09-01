@@ -1,17 +1,21 @@
-// const app = require('express')()
-// const dbdata = require('./db.json')
+const express = require("express");
+const app = express();
+const con = require("./database/mysql");
+const path = require("path");
+if (con.getConnection) {
+  console.log("Connected!");
+}
+app.use(express.static(path.join(__dirname, "pages")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(require("./crypto"));
+app.use("/userMember", require("./routes/api/userMember"));
+const cors = require("cors");
+const corsOptions = {
+  origin: "*",
+};
 
-// app.use(require('express').json())
-// console.log(dbdata)
-// app.get("/data",(req,res) => {
-//      res.json(dbdata)
-// })
-// app.post("/userid",(req,res) =>{
-//     console.log(req.body)
-//     res.send("")
-// })
-// app.use("/*",(req,res) => {
-//     res.status(404)
-//     res.send("NOT FOUND")
-// })
-// app.listen(8080)
+app.use(cors(corsOptions));
+app.listen(80, () => {
+  console.log("listening to port 80");
+});
