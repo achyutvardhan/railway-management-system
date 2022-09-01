@@ -26,8 +26,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/achyutvardhan/railway-management-system">
+    <img src="https://i.ibb.co/cw9NSGn/Screenshot-2022-09-01-235741.png" alt="Logo" width="250" height="250">
   </a>
 
   <h3 align="center">Railway Management System</h3>
@@ -74,35 +74,43 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![https://i.ibb.co/tqhYNV5/Screenshot-2022-09-01-234434.png][product-screenshot]](https://i.ibb.co/tqhYNV5/Screenshot-2022-09-01-234434.png)
+<a href="https://i.ibb.co/tqhYNV5/Screenshot-2022-09-01-234434.png"><img src="https://i.ibb.co/tqhYNV5/Screenshot-2022-09-01-234434.png" alt="Screenshot-2022-09-01-234434" border="0"></a>
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+This is the Railway Management Software , where you add your railway details or view your profile ,edit it as well as you can delete it.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+### First Page
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+<img src="https://i.ibb.co/MG72Pxm/Screenshot-2022-09-02-001422.png" alt="Screenshot-2022-09-02-001422" border="0">
+where you can either see your previously saved details by providing PNR number and pressing submit. Or you can press ADD button to add 
+your details.
 
-Use the `BLANK_README.md` to get started.
+### Second Page
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<img src="https://i.ibb.co/10WrbG4/Screenshot-2022-09-02-001706.png" alt="Screenshot-2022-09-02-001706" border="0">
 
+This is the ADD page where you can save your details .
+
+### Third Page
+
+<img src="https://i.ibb.co/qLGxxxz/Screenshot-2022-09-02-002113.png" alt="Screenshot-2022-09-02-002113" border="0">
+
+Here you can see there is a Delete button where you can delete your details .
+
+### Four Page
+
+<img src="https://i.ibb.co/tLrBpw0/Screenshot-2022-09-02-002233.png" alt="Screenshot-2022-09-02-002233" border="0">
+
+Here you can see there is Edit button where you you can edit your existing details . As you tap edit button a new page opens , where you Edit details.
 
 
 ### Built With
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
+* 
+* [![Express][Express.js]][Express-url]
+* [![Mysql][Mysql.com]][Mysql-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -119,26 +127,12 @@ To get a local copy up and running follow these simple example steps.
 This is an example of how to list things you need to use the software and how to install them.
 * npm
   ```sh
-  npm install npm@latest -g
+  npm install express
   ```
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
