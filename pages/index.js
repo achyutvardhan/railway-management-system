@@ -1,7 +1,6 @@
 const detail = document.querySelector(".divDetail");
 const container = document.querySelector(".container");
 const newContainer = document.querySelector(".container-1");
-let add = document.getElementById("add");
 detail.remove();
 newContainer.remove();
 
@@ -11,7 +10,7 @@ async function showDetail() {
     let input = document.getElementById("formGroupExampleInput").value;
     console.log(input);
     console.log(`http://localhost:80/userMember/submit/${input}`);
-    let result = await fetch(`http://localhost:80/userMember/submit/${input}`, {
+    var result = await fetch(`http://localhost:80/userMember/submit/${input}`, {
       mode: "no-cors",
     });
     try {
@@ -96,13 +95,13 @@ async function showDetail() {
       }
     } catch (err) {
       console.log(err);
+      alert("PNR IS NOT REGISTER!");
     }
   } catch (err) {
     console.log(`Fetch problem: ${err.message}`);
   }
 }
 
-add.addEventListener("click", enterDetail);
 function enterDetail(e) {
   container.replaceWith(newContainer);
 
@@ -111,44 +110,52 @@ function enterDetail(e) {
   save.addEventListener("click", saveDetail);
 
   function saveDetail(e) {
-    let pnrN = document.getElementById("pnr").value;
-    let name = document.getElementById("name").value;
-    let seatNo = document.getElementById("seatNo").value;
-    let birthNo = document.getElementById("birthNo").value;
-    let fromS = document.getElementById("from").value;
-    let toS = document.getElementById("to").value;
-    let dateDepart = document.getElementById("dateDepart").value;
-    let dateArrival = document.getElementById("dateArrival").value;
-    let timeDepart = document.getElementById("timeDepart").value;
-    let timeArrival = document.getElementById("timeArrival").value;
+    var pnrN = document.getElementById("pnr").value;
+    var name = document.getElementById("name").value;
+    var seatNo = document.getElementById("seatNo").value;
+    var birthNo = document.getElementById("birthNo").value;
+    var fromS = document.getElementById("from").value;
+    var toS = document.getElementById("to").value;
+    var dateDepart = document.getElementById("dateDepart").value;
+    var dateArrival = document.getElementById("dateArrival").value;
+    var timeDepart = document.getElementById("timeDepart").value;
+    var timeArrival = document.getElementById("timeArrival").value;
 
     async function postData(
-      url = "http://localhost:5000/userMember/add",
+      url = "http://localhost:80/userMember/add",
       data = {
         pnr: pnrN,
-        name: name,
-        seatno: seatNo,
-        birthno: birthNo,
-        fromS: fromS,
-        toS: toS,
-        dateOfDeparture: dateDepart,
-        dateOfArrival: dateArrival,
-        timeOfArrival: timeDepart,
-        timeOfDeparture: timeArrival,
+        user_name: name,
+        seat_number: seatNo,
+        birth_number: birthNo,
+        from: fromS,
+        to: toS,
+        date_of_departure: dateDepart,
+        date_of_arrival: dateArrival,
+        time_of_departure: timeDepart,
+        time_of_arrival: timeArrival,
       }
     ) {
-      const response = await fetch(url, {
+      console.log(data);
+      var response = await fetch(url, {
         method: "POST",
-        mode: "no-cors",
         headers: {
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
-      return response.json();
+      if (response.status == 200) {
+        alert("Registration Succesfull ");
+      }
+      if (response.status == 400) {
+        let postResult = await response.json();
+        console.log(postResult);
+      }
     }
 
-    postData();
-    alert("data registered successfully!");
+    if (postData()) {
+      newContainer.replaceWith(container);
+    }
   }
 }
