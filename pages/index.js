@@ -4,31 +4,22 @@ const newContainer = document.querySelector(".container-1");
 let add = document.getElementById("add");
 detail.remove();
 newContainer.remove();
-let submit = document.querySelector("#submit");
-submit.addEventListener("click", showDetail);
 
-async function showDetail(e) {
-  let input = document.getElementById("formGroupExampleInput").value;
-
+async function showDetail() {
   //fetch function
-  let result = await fetch(`http://localhost:5000/userMember/submit/${input}`, {
-    method: "GET",
-    mode: "no-cors",
-  })
-    .then((res) => {
-      console.log(res);
-      if (!res.ok) {
-        throw new Error(`HTTP error: ${res.status}`);
-      }
-      return res.json();
-    })
-    .then((json) => {
-      // console.log(json);
-
+  try {
+    let input = document.getElementById("formGroupExampleInput").value;
+    console.log(input);
+    console.log(`http://localhost:80/userMember/submit/${input}`);
+    let result = await fetch(`http://localhost:80/userMember/submit/${input}`, {
+      mode: "no-cors",
+    });
+    try {
+      let json = await result.json();
+      console.log(json);
       input = document.getElementById("formGroupExampleInput").value;
-      for (let index = 0; index < json.length; index++) {
-        if (input == json[index].pnr) {
-          container.innerHTML = ` <div class="divPnr">
+      if (input == json.pnr) {
+        container.innerHTML = ` <div class="divPnr">
           <div class="mb-3">
               <label for="formGroupExampleInput" class="form-label">Enter PNR:</label>
               <input type="number" class="form-control" id="formGroupExampleInput" placeholder="123456789">
@@ -54,38 +45,38 @@ async function showDetail(e) {
                 <tr>
 
                   <td>PNR:</td>
-                  <td id="pnr">${json[index].pnr}</td>
+                  <td id="pnr">${json.pnr}</td>
 
                 </tr>
                 <tr>
 
                   <td>NAME:</td>
-                  <td id="name">${json[index].name}</td>
+                  <td id="name">${json.name}</td>
                 </tr>
                 <tr>
 
                  <td>SEAT NO:</td>
-                 <td id="seatNo">${json[index].seatno}</td>
+                 <td id="seatNo">${json.seatno}</td>
                  <td>BIRTH NO:</td>
-                  <td id="birthNo">${json[index].birthno}</td>
+                  <td id="birthNo">${json.birthno}</td>
                 </tr>
                 <tr>
                   <td>FROM:</td>
-                 <td id="from">${json[index].fromS}</td>
+                 <td id="from">${json.fromS}</td>
                  <td>TO:</td>
-                  <td id="to">${json[index].toS}</td>
+                  <td id="to">${json.toS}</td>
                 </tr>
                 <tr>
                   <td>DATE-DEPATRURE:</td>
-                 <td id="dateDepart">${json[index].dateOfDeparture}</td>
+                 <td id="dateDepart">${json.dateOfDeparture}</td>
                  <td>DATE-ARRIVAL:</td>
-                  <td id=" dateArrival">${json[index].dateOfArrival}</td>
+                  <td id=" dateArrival">${json.dateOfArrival}</td>
                 </tr>
                 <tr>
                   <td>TIME-DEPART:</td>
-                 <td id="timeDepart">${json[index].timeOfArrival}</td>
+                 <td id="timeDepart">${json.timeOfArrival}</td>
                  <td>TIME-ARRIVAL:</td>
-                  <td id="timeArrival">${json[index].timeOfDeparture}</td>
+                  <td id="timeArrival">${json.timeOfDeparture}</td>
                 </tr>
               </tbody>
             </table>
@@ -98,18 +89,17 @@ async function showDetail(e) {
                   </div>
             </div>
       </div>`;
-          submit = document.querySelector("#submit");
-          submit.addEventListener("click", showDetail);
-          // add = document.getElementById("add");
-          // add.remove();
-
-          //now lets head towards delete
-
-          let id = index + 1;
-        }
+        let submit = document.getElementById("submit");
+        submit.addEventListener("click", showDetail);
+        // add = document.getElementById("add");
+        // add.remove();
       }
-    })
-    .catch((err) => console.error(`Fetch problem: ${err.message}`));
+    } catch (err) {
+      console.log(err);
+    }
+  } catch (err) {
+    console.log(`Fetch problem: ${err.message}`);
+  }
 }
 
 add.addEventListener("click", enterDetail);
