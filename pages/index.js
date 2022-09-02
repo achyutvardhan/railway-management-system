@@ -125,9 +125,11 @@ async function showDetail() {
         editU.addEventListener("click", editUser);
         function editUser() {
           container.replaceWith(newContainer);
-
-          let editSave = document.getElementById("save1");
-          editSave.addEventListener("click", editedData);
+          const esave = document.getElementById("save1");
+          esave.style.display = "none";
+          const edit = document.getElementById("edit1");
+          edit.style.display = "block";
+          edit.addEventListener("click", editedData);
 
           async function editedData() {
             var epnrN = document.getElementById("pnr").value
